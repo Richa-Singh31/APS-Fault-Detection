@@ -103,7 +103,6 @@ class DataValidation:
 
 
             status = self.validate_number_of_columns(dataframe=train_dataframe)
-            logging.info(f"{status}")
             if not status:
                 error_message=f"{error_message} train dataframe does not contain all columns.\n"
 

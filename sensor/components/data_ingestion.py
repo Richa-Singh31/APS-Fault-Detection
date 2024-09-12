@@ -15,9 +15,7 @@ class DataIngestion:
     def __init__(self, data_ingestion_config: DataIngestionConfig):
         try:
             self.data_ingestion_config = data_ingestion_config
-            # logging.info(f"{SCHEMA_FILE_NAME}")
-            # self._schema_config = read_yaml(SCHEMA_FILE_NAME)
-            # logging.info(f"{self._schema_config}")
+            self._schema_config = read_yaml(SCHEMA_FILE_NAME)
 
         except Exception as e:
             raise SensorException(e, sys)
@@ -70,11 +68,7 @@ class DataIngestion:
     def initiate_data_ingestion(self) -> DataIngestionArtifact:
         try:
             dataframe = self.export_data_into_feature_store()
-            # logging.info(f"got df")
-            # drop_columns = self._schema_config.get("drop_columns", [])
-            # logging.info(f"Columns to drop: {self._schema_config}")
-            # dataframe=dataframe.drop(self._schema_config["drop_columns"], axis=1)
-            # logging.info(f"after drop: {dataframe.head()}")
+            dataframe=dataframe.drop(self._schema_config["drop_columns"], axis=1)
 
             self.split_data_as_train_test(dataframe=dataframe)
 

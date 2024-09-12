@@ -36,10 +36,8 @@ class TrainPipeline:
             logging.info("Data validation started")
 
             data_validation = DataValidation(data_ingestion_artifact=data_ingestion_artifact,data_validation_config=self.data_validation_config)
-            logging.info("processing..")
 
             data_validation_artifact = data_validation.initiate_data_validation()
-            logging.info("artifact constructed")
 
             return data_validation_artifact
         

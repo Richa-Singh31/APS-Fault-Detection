@@ -1,0 +1,10 @@
+pymongo[srv]==4.2.0
+pandas
+numpy
+scikit-learn
+pymongo
+python-dotenv
+pyYAML
+dill
+
+-e .

@@ -6,5 +6,7 @@ pymongo
 python-dotenv
 pyYAML
 dill
+scipy
+imblearn==0.0
 
 -e .

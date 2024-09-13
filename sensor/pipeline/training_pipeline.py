@@ -1,11 +1,12 @@
 import os
 import sys
-from sensor.entity.config_entity import TrainingPipelineConfig, DataIngestionConfig, DataValidationConfig
-from sensor.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact
+from sensor.entity.config_entity import TrainingPipelineConfig, DataIngestionConfig, DataValidationConfig, DataTransformationConfig
+from sensor.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact, DataTransformationArtifact
 from sensor.exception import SensorException
 from sensor.logger import logging
 from sensor.components.data_ingestion import DataIngestion
 from sensor.components.data_validation import DataValidation
+from sensor.components.data_transformation import DataTransformation
 
 class TrainPipeline:
 
@@ -44,11 +45,27 @@ class TrainPipeline:
         except Exception as e:
             return SensorException(e, sys)
         
+    def start_data_transformation(self, data_validation_artifact: DataValidationArtifact) -> DataTransformationArtifact:
+        try:
+            self.data_transformation_config = DataTransformationConfig(training_pipeline_config=self.training_pipeline_config)
+            logging.info("Data transformation started")
+
+            data_transformation = DataTransformation(data_transformation_config=self.data_transformation_config, data_validation_artifact=data_validation_artifact)
+
+            data_transformation_artifact = data_transformation.initiate_data_transformation()
+
+            return data_transformation_artifact
+        
+        except Exception as e:
+            raise SensorException(e, sys)
+
     def run_pipeline(self):
         try:
             data_ingestion_artifact: DataIngestionArtifact = self.start_data_ingestion()
 
-            data_validation_artifact=self.start_data_validation(data_ingestion_artifact=data_ingestion_artifact)
+            data_validation_artifact: DataValidationArtifact = self.start_data_validation(data_ingestion_artifact=data_ingestion_artifact)
+
+            data_transformation_artifact: DataTransformationArtifact = self.start_data_transformation(data_validation_artifact=data_validation_artifact)
 
         except Exception as e:
             raise SensorException(e, sys)

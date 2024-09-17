@@ -42,3 +42,12 @@ data transformation related constant values
 DATA_TRANSFORMATION_DIR_NAME: str = "data_transformation"
 DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR = "transformed"
 DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR = "transformed_object"
+
+"""
+model trainer related contstant values
+"""
+MODEL_TRAINER_DIR_NAME: str = "model_trainer"
+MODEL_TRAINER_TRAINED_MODEL_DIR:str = "trained_model"
+MODEL_TRAINER_TRAINED_MODEL_NAME: str = "model.pkl"
+MODEL_TRAINER_EXPECTED_SCORE: float = 0.9
+MODEL_TRAINER_OVERFITTING_UNDERFITTING_THRESHOLD: float = 0.05

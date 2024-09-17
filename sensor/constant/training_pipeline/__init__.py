@@ -8,6 +8,7 @@ FILE_NAME = "sensor.csv"
 TRAIN_FILE_NAME: str = "train.csv"
 TEST_FILE_NAME: str = "test.csv"
 
+SAVED_MODEL_DIR: str = os.path.join("saved_model")
 PREPROCESSING_FILE_NAME = "preprocessing.pkl"
 MODEL_FILE_NAME = "model.pkl"
 
@@ -51,3 +52,10 @@ MODEL_TRAINER_TRAINED_MODEL_DIR:str = "trained_model"
 MODEL_TRAINER_TRAINED_MODEL_NAME: str = "model.pkl"
 MODEL_TRAINER_EXPECTED_SCORE: float = 0.9
 MODEL_TRAINER_OVERFITTING_UNDERFITTING_THRESHOLD: float = 0.05
+
+"""
+model evaluation related constnat values
+"""
+MODEL_EVALUATION_DIR_NAME: str = "model_evaluation"
+MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
+MODEL_EVALUATION_REPORT_NAME: str = "report.yaml"

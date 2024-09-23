@@ -75,3 +75,13 @@ class ModelEvaluationConfig:
         self.changed_threshold: str = training_pipeline.MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
 
         self.report_file_path: str = os.path.join(self.model_evaluation_dir, training_pipeline.MODEL_EVALUATION_REPORT_NAME)
+
+class ModelPusherConfig:
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig) -> None:
+        self.model_pusher_dir: str = os.path.join(training_pipeline_config.artifact_dir, training_pipeline.MODEL_PUSHER_DIR_NAME)
+
+        self.model_file_path: str = os.path.join(self.model_pusher_dir, training_pipeline.MODEL_FILE_NAME)
+
+        timestamp = round(datetime.now().timestamp())
+
+        self.saved_model_path: str = os.path.join(training_pipeline.SAVED_MODEL_DIR, f"{timestamp}", training_pipeline.MODEL_FILE_NAME)

@@ -45,7 +45,7 @@ DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR = "transformed"
 DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR = "transformed_object"
 
 """
-model trainer related contstant values
+model trainer related constant values
 """
 MODEL_TRAINER_DIR_NAME: str = "model_trainer"
 MODEL_TRAINER_TRAINED_MODEL_DIR:str = "trained_model"
@@ -54,8 +54,14 @@ MODEL_TRAINER_EXPECTED_SCORE: float = 0.9
 MODEL_TRAINER_OVERFITTING_UNDERFITTING_THRESHOLD: float = 0.05
 
 """
-model evaluation related constnat values
+model evaluation related constant values
 """
 MODEL_EVALUATION_DIR_NAME: str = "model_evaluation"
 MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
 MODEL_EVALUATION_REPORT_NAME: str = "report.yaml"
+
+
+"""
+model pusher related constant values
+"""
+MODEL_PUSHER_DIR_NAME = "model_pusher"
